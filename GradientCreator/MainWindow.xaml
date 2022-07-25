@@ -3,25 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GradientCreator"
+        xmlns:local="clr-namespace:GradientCreator" xmlns:service="clr-namespace:GradientCreator.Service"
         mc:Ignorable="d"
-        Title="MainWindow" MinWidth="400" MinHeight="450" Height="450" Width="800" Topmost="True" >
-    <Grid>
-        <Grid  >
+        Title="MainWindow" MinWidth="400" MinHeight="450" Height="450" Width="800" Topmost="False" >
+    <Window.Resources>
+        <service:PointConverter x:Key="PointConverter"></service:PointConverter>
+        <service:PointEndConverter x:Key="PointEndConverter"></service:PointEndConverter>
+    </Window.Resources>
+    <Grid x:Name="MainGrid">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="1.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Margin="20 10 20 0" >
+            <Border Grid.Row="0" Margin="20 10 20 0"  >
                 <Border.Background>
-                    <LinearGradientBrush x:Name="MainGradient" >
+                    <LinearGradientBrush x:Name="MainGradient" 
+                                         StartPoint="{Binding ElementName=AngleSlider, Path=Value, Converter={StaticResource PointConverter}}" 
+                                         EndPoint="{Binding ElementName=AngleSlider, Path=Value, Converter={StaticResource PointEndConverter}}">
                         <GradientStop Color="red" Offset="0"></GradientStop>
                         <GradientStop Color="Green" Offset="1"></GradientStop>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
             <Grid Grid.Row="1" Margin="20 10 20 0">
-                <Slider ></Slider>
+                <Slider x:Name="AngleSlider" Minimum="0" Maximum="4" SmallChange="0.01" LargeChange="0.1" TickFrequency="0.01"></Slider>
+                <Button Click="Button_Click" Height="50" Width="50"></Button>
+                
             </Grid>
         </Grid>
     </Grid>

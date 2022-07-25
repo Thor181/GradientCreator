@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GradientCreator
+namespace GradientCreator.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для ColorPicker.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ColorPicker : UserControl
     {
-        public MainWindow()
+        public ColorPicker()
         {
             InitializeComponent();
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainGrid.Children.Add(new View.ColorPicker());
         }
     }
 }

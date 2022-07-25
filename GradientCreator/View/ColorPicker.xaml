@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="GradientCreator.View.ColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GradientCreator.View" xmlns:service="clr-namespace:GradientCreator.Service"
+             mc:Ignorable="d" 
+             Height="300" Width="300">
+    <UserControl.Resources>
+        <service:VisibilityConverter x:Key="VisibilityConverter"></service:VisibilityConverter>
+    </UserControl.Resources>
+    <Grid x:Name="MainGrid" d:Background="Green">
+        <ToggleButton x:Name="PopupToggleButton" Height="25" Width="25" HorizontalAlignment="Left" VerticalAlignment="Top"></ToggleButton>
+        <Popup x:Name="MainPopup" d:IsOpen="True" Placement="Bottom" HorizontalOffset="25" PlacementTarget="{Binding ElementName=PopupToggleButton}"
+              IsOpen="{Binding ElementName=PopupToggleButton, Path=IsChecked}" 
+               VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid Height="43">
+                <Image Source="/Resources/colorMap.png" 
+                       HorizontalAlignment="Left" VerticalAlignment="Top"></Image>
+                <Slider VerticalAlignment="Center" ></Slider>
+            </Grid>
+        </Popup>
+    </Grid>
+</UserControl>
