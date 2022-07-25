@@ -5,19 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GradientCreator.View" xmlns:service="clr-namespace:GradientCreator.Service"
              mc:Ignorable="d" 
-             Height="300" Width="300">
+             Height="25" Width="25">
     <UserControl.Resources>
         <service:VisibilityConverter x:Key="VisibilityConverter"></service:VisibilityConverter>
     </UserControl.Resources>
     <Grid x:Name="MainGrid" d:Background="Green">
         <ToggleButton x:Name="PopupToggleButton" Height="25" Width="25" HorizontalAlignment="Left" VerticalAlignment="Top"></ToggleButton>
-        <Popup x:Name="MainPopup" d:IsOpen="True" Placement="Bottom" HorizontalOffset="25" PlacementTarget="{Binding ElementName=PopupToggleButton}"
-              IsOpen="{Binding ElementName=PopupToggleButton, Path=IsChecked}" 
+        <Popup x:Name="MainPopup" d:IsOpen="True" IsOpen="{Binding ElementName=PopupToggleButton, Path=IsChecked}" 
+               Placement="Bottom" HorizontalOffset="25" PlacementTarget="{Binding ElementName=PopupToggleButton}"
                VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid Height="43">
                 <Image Source="/Resources/colorMap.png" 
-                       HorizontalAlignment="Left" VerticalAlignment="Top"></Image>
-                <Slider VerticalAlignment="Center" ></Slider>
+                       HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
+                
             </Grid>
         </Popup>
     </Grid>
