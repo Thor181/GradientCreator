@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,30 +16,25 @@ using System.Windows.Shapes;
 
 namespace GradientCreator.View
 {
-    /// <summary>
-    /// Логика взаимодействия для ColorPicker.xaml
-    /// </summary>
     public partial class ColorPicker : UserControl
     {
-        private BitmapImage bitmap;
+        private readonly BitmapImage bitmap;
+        
         public ColorPicker()
         {
             InitializeComponent();
-            Uri uri = new Uri("pack://application:,,,/Resources/colormap.png");
-            bitmap = new BitmapImage(uri);
+            
+            bitmap = new BitmapImage(new Uri("pack://application:,,,/Resources/colormap.png"));
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
-
             Point p = e.GetPosition((IInputElement)sender);
-            Pixel[,] pixels = new Pixel[bitmap.PixelHeight, bitmap.PixelWidth];
-            bitmap.CopyPixels(pixels, bitmap.PixelWidth * 4, 0);
-
+            var a = new Pixel[bitmap.PixelHeight, bitmap.PixelWidth];
             var JUST_BREAKPOINT = string.Empty;
         }
     }
+    [StructLayout(LayoutKind.Sequential)]
     public struct Pixel
     {
         public byte Red;

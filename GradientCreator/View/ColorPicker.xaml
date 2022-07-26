@@ -17,6 +17,7 @@
             <Grid Height="43">
                 <Image Source="/Resources/colorMap.png" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
+                <Slider VerticalAlignment="Center"></Slider>
                 
             </Grid>
         </Popup>
