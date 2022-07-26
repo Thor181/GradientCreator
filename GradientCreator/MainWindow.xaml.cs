@@ -23,12 +23,7 @@ namespace GradientCreator
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainGrid.Children.Add(new View.ColorPicker());
-        }
     }
 }

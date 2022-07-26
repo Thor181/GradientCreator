@@ -10,16 +10,20 @@
         <service:VisibilityConverter x:Key="VisibilityConverter"></service:VisibilityConverter>
     </UserControl.Resources>
     <Grid x:Name="MainGrid" d:Background="Green">
-        <ToggleButton x:Name="PopupToggleButton" Height="25" Width="25" HorizontalAlignment="Left" VerticalAlignment="Top"></ToggleButton>
-        <Popup x:Name="MainPopup" d:IsOpen="True" IsOpen="{Binding ElementName=PopupToggleButton, Path=IsChecked}" 
+        <ToggleButton x:Name="PopupToggleButton" Height="25" Width="25" HorizontalAlignment="Left" VerticalAlignment="Top" IsTabStop="False"></ToggleButton>
+        <Popup x:Name="MainPopup" IsOpen="{Binding ElementName=PopupToggleButton, Path=IsChecked}"
                Placement="Bottom" HorizontalOffset="25" PlacementTarget="{Binding ElementName=PopupToggleButton}"
                VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Grid Height="43">
-                <Image Source="/Resources/colorMap.png" 
-                       HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Image_MouseLeftButtonDown"></Image>
-                <Slider VerticalAlignment="Center"></Slider>
-                
+            <Grid Height="37" Width="255">
+                <Border BorderThickness="2"  BorderBrush="Gray">
+                    <Image x:Name="ImagePlace" Source="pack://application:,,,/Resources/colorMap.png" Stretch="None"
+                           HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Image_MouseLeftButtonDown"
+                           MouseMove="ImagePlace_MouseMove" />
+                </Border>
             </Grid>
+        </Popup>
+        <Popup x:Name="PreviewPopup"  Placement="Absolute"  IsOpen="{Binding ElementName=ImagePlace, Path=IsMouseDirectlyOver, Mode=OneWay}">
+            <Grid x:Name="PreviewPopupGrid" Height="50" Width="50"></Grid>
         </Popup>
     </Grid>
 </UserControl>

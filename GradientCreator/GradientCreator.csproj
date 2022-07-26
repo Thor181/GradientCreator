@@ -11,9 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\colorMap.png">
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\colorMap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
 
 </Project>
